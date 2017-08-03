@@ -1,0 +1,10 @@
+<div class="container" fxLayout="column" fxLayoutGap="10px">
+  <md-list fxFlex> <!-- fxFlex attribute specifies that this element will be treated as one complete unit or piece of content
+  that will be laid out by flex layout -->
+    <md-list-item *ngFor="let dish of dishes">
+      <img md-list-avatar src="{{dish.image}}" alt="{{dish.name}}">
+      <h1 md-line>{{dish.name}}</h1>
+      <p md-line>{{dish.description}}</p>
+    </md-list-item>
+  </md-list> <!-- md-list component allows us to create a list of items to include in the template -->
+</div>

@@ -1,10 +1,39 @@
+<!--
 <div class="container" fxLayout="column" fxLayoutGap="10px">
+
+
   <md-list fxFlex> <!-- fxFlex attribute specifies that this element will be treated as one complete unit or piece of content
   that will be laid out by flex layout -->
-    <md-list-item *ngFor="let dish of dishes">
+    <!--<md-list-item *ngFor="let dish of dishes">
       <img md-list-avatar src="{{dish.image}}" alt="{{dish.name}}">
       <h1 md-line>{{dish.name}}</h1>
       <p md-line>{{dish.description}}</p>
     </md-list-item>
   </md-list> <!-- md-list component allows us to create a list of items to include in the template -->
+<!--</div>
+-->
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+  <div fxFlex>
+    <div>
+      <h3>Menu</h3>
+      <hr>
+    </div>
+  </div>
+
+  <div fxFlex>
+    <md-grid-list cols="2" rowHeight="200px">
+      <md-grid-tile *ngFor="let dish of dishes">
+        <img height="200px" src={{dish.image}} alt={{dish.name}}>
+        <md-grid-tile-footer>
+          <h1 md-line>{{dish.name | uppercase}}</h1>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+    </md-grid-list>
+  </div>
+
+  <app-dishdetail></app-dishdetail>
+
 </div>

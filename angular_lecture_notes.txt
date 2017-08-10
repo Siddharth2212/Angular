@@ -1,0 +1,633 @@
+Front-End JavaScript Frameworks Overview: Angular
+
+In this module we get a quick introduction to front-end JavaScript 
+frameworks, followed by an introduction to Angular. 
+->Express the general characteristics of JavaScript frameworks
+Why JS frameworks?
+->As application size grows it becomes difficult to manage DOM manipulation
+and data updates manually. Approaches like jQuery library may not sufficiently
+address the needs you have on hand and that's where the availability of
+well structured frameworks which rely on standard software engineering
+patterns like the MVC helps us to implement these web applications
+effectively and scalably
+Library vs Frameworks:-
+	a library:-a collection of functions which ar useful when writing web apps.
+				Your code is in charge and it calls into the library when it sees
+				fit. E.g., jQuery
+	frameworks:-a particular implementation of a web application where your 
+				code fills in the details. The framework is in charge and it
+				calls into your code when it needs something app specific. 
+				E.g., Angular, Ember, etc.
+				(The framework itself scaffolds the application and you are
+				asked to fill in the details that are required to
+				customize the application to solve the specific problem
+				that you are trying to address)
+				
+Angular History:-
+	->Evolved from AngularJS was designed by Misko Hevery  and released in June 2012)
+	->Angular is Complete rewrite of the AngularJS framework but does owe
+	some of its features to the earlier framework
+	->Component-based
+	->Mobile support
+	->Provides server-side rendering to speed up rendering on browsers
+	->Provides powerful templeting support
+	
+What is Angular?
+	->Structural framework for dynamic web applications
+		->HTML  only does static documents
+		->Angular supports data driven dynamic applications using declarative
+		approach
+				
+We will also learn about Angular components and their templates.
+->Scaffold out a starter Angular application using angular-cli, the 
+command line tool:-
+	->https://cli.angular.io
+	->npm install -g @angular/cli
+	->ng new conFusion -dir=./conFusion --style=scss
+	->ng serve --open
+	->Create a new project using the Angular framework
+	->Set up application using angular, angular material and angular flex-layout
+		->In this exercise you installed the Angular CLI tool and created 
+		a basic Angular project and served up the compiled project to your 
+		browser.
+->Understand the architecture of an Angular application:-
+	->Angular applications are built by combination of HTML and either typescript
+	or JavaScript
+	->Angular itself consists of several libraries. Some core libraries and other
+	optional libraries. Depending on the kind of application you are trying to build
+	you will include some of these in your application
+	->Angular architecture:-
+		->Modular: Angular applications are modular in nature and consists of
+		->Component-based with Templates: several components along with the templates
+		that comprise the application.
+		->Services: Not only that, these components along with the services
+		will be organized into modules and these modules in turn will be used
+		by higher level modules. So you can look at angular application being about
+		modular architecture with a root module(AppModule) at the top which takes
+		the help of other modules organized into a modular hierarchy.
+		
+		->root module in angular is typAngularically named the AppModule
+		->Let's being our journey at index.html
+			-><app-root>Loading...</app-root> does  not look familiar as to HTML.
+			What does this stand for and why is this included in index.html page?
+				->As we already saw that a typical angular application is a hierarchy of
+				modules with a root module. Your angular application is bootstrapped by
+				bootstrapping the root module to start your application. A companion to
+				index.html page is the main.ts file.
+					->If you go into the main.ts file, you see 
+					platformBrowserDynamic().bootstrapModule(AppModule);
+					The parameter here is AppModule which is a typical named
+					give to the root module in angular application
+				-> the first import in the main.ts file,
+				import { enableProdMode } from '@angular/core';
+				it specifies that we will import enableProdMode module from
+				the angular core library
+				similarly, import { platformBrowserDynamic } from 
+				'@angular/platform-browser-dynamic'; means that you are
+				importing platformBrowserDynamic module from the
+				angular platform-browser-dynamic library.
+					->The platformBrowserDynamic module enables you
+					to bootstrap your angular application by taking
+					your root module as a parameter
+		->angular-cli helps create this hierarchy of folders and files with
+		the necessary settings for you to be able to bootstrap your angular
+		application and get started
+		->app.module.ts file is the root module for your angular application.
+			->it takes AppComponent and forms the root component of the
+			angular application
+			->Along with these, AppModule has a class and a decorator (a function
+			which modifies the class)
+				->@NgModule decorator, which enables us to specify some details
+				about the module (AppModule here)
+					->Decorator function takes a certain set of metadata to
+					help you to describe this module.
+						->the imports metadata specifies all the modules that this
+						module is dependent on and therefore needs to be imported
+						->declarations property is the property that declares the
+						view classes that belong to this particular module, which
+						will be in the form of components, directives or ,
+						->providers specifies all the services that this module
+						will make use of
+		->A module in an angular application consists of a set of components and
+		services that will be required by this module by importing them and these
+		will be declared using the declarations property of the NgModule decorator
+		in our app module
+		->These components themselves can be dependent themselves on other
+		components or services or directives or types
+	->Configuring angular application:-
+		->to use few other modules which enable us to design the template for
+		our angular application
+			->we will use the angular material module to design the layout
+				->it provides a no of interesting angular components that we
+				can make use of in designing our angular component's templates
+					->npm install --save @angular/material @angular/cdk 
+					  npm install --save @angular/animations 
+					  npm install --save hammerjs
+					  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+						angular material icons
+					  import modules to app  module
+					  configured angular application to make use of angular material and flex layout
+					  make use of first angular material design component in the app component's template file
+					  make use of built-in Material theme to our application
+			->in addition we will make use of the flex-layout which makes use of the
+			css flex-layout which enables us to do responsive design within our 
+			angular application
+		->app.component.ts file supports the root component that forms the root
+		component of our angular application
+			->selector: where the view corresponding to this component should
+			be displayed
+			->templateUrl: points to the template which provides the view for\
+			this component
+			->styleUrls: points the scss code which can be used to style our template
+	
+->Create Angular components within your Angular application
+	->Role of angular components in designing angular application and 
+	designing the various views that are supported in angular application
+		->A typical angular application consists of many components. Components
+		control a part of the screen called as view in angular
+		->So when you design a screen in your angular application, you may
+		divide your screen into multiple views each one of them being controlled
+		by a separate component. So far we have one single component that controls
+		the entire screen.
+		->export the component so that is importable from the module
+		->Inside the class you can define the properties and methods that will
+		be accessible from the template
+		->Not only that you can have event binding from your template back
+		to your component
+		->Component themselves can be organized into hierarchy. We can have multiple
+		components inside root component which in turn can have multiple components
+		->This hierarchy of components enables us to design the application's screen
+	->Use Angular-CLI to scaffold out the barebones of an Angular component
+	->Construct the Angular component code and the template for your component
+	->Structural directives:-
+		Directives:-
+			Angular templates are dynamic. Directives give instructions to
+			Angular on how to render templates to the DOM
+			A directive can be defined in angular as a class with @Directives
+			decorator
+			->Components: a special kind of directive with a template associated to it
+			->Structural Directives: Allows you to alter the layout by
+				adding, removing and replacing the elements in DOM. So
+				you are really using structural directives to manipulate
+				the DOM of your webpage
+				->NgIf
+				->NgFor
+				->NgSwitch
+			->Attributes Directives
+
+
+
+
+
+
+
+____________________________
+
+Angular Services, Routing and Single Page Applications
+	->Describe the various ways that data binding is used in an Angular application
+		In this lesson you will learn about data binding and how data 
+		binding enables the flow of information between the component 
+		and its template.
+			For an angular application to be dynamic, there has to be communication
+			between DOM and the component
+			
+			Data binding:- a mechanism for coordinating the flow of 
+			information between the component and the template
+				->On the component side it may be a property or methods
+				that may be supplied to the template or invoked from
+				the DOM
+				->On the template side it may be some information that is
+				required by the template to be rendered into the DOM or events
+				from the DOM captured and sent back to your component
+					->All this require data flowing from component to template
+					->Events generated by user interaction flowing to the 
+					component
+						->All this happen in angular using four different
+						kinds of flow of information
+							->interpolation:- where the value of a property
+							flows to the component
+
+		You will learn about interpolation, property attribute and event 
+		binding and the use of two-way data binding. At the end of this 
+		lesson you will be able to:
+			
+		Understand how the data flows between the component code and 
+		its template
+			
+		Understand how one-way and two-way data binding can be used to 
+		effect the flow of data.
+		
+			->Bind a property into template from anther component and access into
+			this component by using Input module.
+				->We can use Input module to retrieve information from one component
+				to another component
+	
+	
+	->Create a service that enables the Angular application to encapsulate all data related operations
+		->In this lesson you will learn about the basics of Angular 
+		services and how they interact with Angular components. 
+			->Why services?
+				->Component classes should be kept as lean as possible.
+				->They should only be  mainly concentrating on acting as
+				a mediator between the view and the application logic(model)
+				->Fetching data from server, user input validation and logging
+				should be delegated to a service
+				->To factor out application logic into services and let them
+				do heavy lifting
+			->Up until now we had templates and components where each component
+			was controlling its template, now the component itself can take
+			the  help of service so in this case the service will be injected
+			into the component to provide certain features for the component
+			to make use. So the service does all the work that facilitates the
+			component to be able to provide all the properties and the methods
+			for the templates to make use of while rendering the view and
+			correspondingly transporting the user intraction related actions
+			back to the model behind the scenes
+			->Related concepts:
+				->DI
+					->What is DI?
+						->DI is a software design pattern (Martin Cowler, 2004) that is useful
+						for implementing applications where you have
+						one object that is dependent on another object
+						in a way that is efficient
+						->DI has two parts:-
+							->Dependency:-
+								->Dependency means that your object is
+								dependent on another object and that is
+								why there is a dependency between your
+								object and the other object
+							->Injection:-
+								->Injection is talking about passing the
+								dependency to the dependent object. So if
+								you have an object and there is a mechanism
+								available to a second object so that the
+								other object can make use of it without
+								being aware of exactly how the first
+								object was implemented or created
+									->So in this case the object that is
+									dependent is unaware or does not need 
+									to worry about how the other object
+									is implemented. It just needs to make
+									use of your object wherever it is required.
+										->If an object is dependent on another
+										object, there are three ways it can access
+										the another object:-
+											->It can create the dependent object
+											itself by using the new operator
+											->Declare object using a global variable
+											and then look up dependency using a global
+											variable
+											->Have dependency passed to it where needed.
+											So if you need some object it will injected
+											there where it is required. It gives a lot
+											of flexibility as:-
+												-> no need of hardcoding, so you don't
+												need to worry about how it was created as
+												long as you have access to it
+												->It facilitates ease of testing your
+												application because instead of passing
+												the object you are dependent upon you can
+												pass a mock object to test your specific
+												object
+						
+					->DI has 4 different roles:-
+						->Service: that you are gonna make use of in
+						your component, that needs to be injected
+						->Client: Which is dependent upon the service, in
+						this case is your component
+						->Interfaces: Once injected how do you make use of the
+						service
+						->Injector: The entity that is reponsible for injecting
+						the object into your object
+					->Angular exploits the DI very much so as to separate business
+					logic and dependency construction. So you can write your
+					business logic into independent objects and inject them
+					wherever it is required and the dependency is passed in
+					to the dependent object wherever it is needed.
+					->This injection is taken care by Angular injector subsystem
+					which:-
+						->takes care of creation of these services
+						->inject them wherever you need them
+						
+					->@Injectable() decorator is provided by Injectable module.
+					This allows this object to be injected into wherever it
+					is required. This allows DI to be used in our application.
+					->When you inject a service into a module say, AppModule,
+					it will create a single object of that service and that will
+					be made available to you in the component by using constructor,
+					so that you can then call upon methods this service provides
+					to you in order to do work on your behalf.
+						
+				->Promises
+				->Reactive Javascript
+				
+		->You will also learn the basics of Model-View-Controller (MVC) 
+		and Model-View-ViewModel (MVVM) software engineering paradigms.
+			Design patterns:-A well-documented solution to a recurring problem
+			->Also referred to as an architectural pattern
+			->To summarize these are resusable solution to commonly occuring
+			problems
+		->You will also be introduced to the basics of Dependency 
+		Injection (DI)
+	
+	
+	
+	->Develop an Angular router to enable navigating to various views in your Angular application
+		->Set up the router module to enable navigation among multiple component views
+		->Set up the routes to enable the navigation
+			->Header, footer and between the part of the application
+			which will be controlled by the router
+			->Install font-awesome icons and include them in angular-cli.json file
+			->Install header component and footer component
+				->Angular routing basics:-
+					->Router module is a separate module and you will have
+					to include it explicitly
+					->Router enabless navigation among views
+						->This is where the angular router takes advantage of
+						the browser URL and it uses the browser URL as an
+						instruction for it to navigate among various
+						client-generated views
+							->This is where angular router takes advantage
+							of what is already supported in HTML5 through
+							the history API. It gives developer the ability to
+							modify a website's URL without a full page refresh
+								->HTML5 history API supports method like
+								pushState() which allows you to add a history
+								entry into your browser's history, similarly
+								replaceState() will modify history entry, whereby
+								you can use the back and forward button of the browser
+								to navigate back and forward without causing a page
+								refresh. This is where you need to specify something
+								in your index.html page called a base, so that when
+								you make use of these methods then for the modifications
+								you need to specify a base location from where you are
+								specifying the additional parts of your URI path which will
+								not result in a page refresh. Everything that comes after
+								the base href is handled by the angular router itself
+								without causing your browser to need a refresh from the server
+								->domain/home->domain/menu will happen without page refresh
+								->Angular router leverages HTML5 history manipulation
+								to modify the browser URL
+								->Terms:-
+									->Router Module
+									->Routes, specified in the form of a path and corresponding
+									component
+								->Within the template of app component we will
+								include a directive called as router-outlet
+									->When the angular router navigates to the
+									different views of the different components
+									the corresponding view of the component will be
+									included within your application's view wherever
+									you specify this router outlet
+								->routerLink is another directive that can be used
+								with anchor links to navigate by triggering angular router
+	
+	->Develop a single page application using the Angular router support
+		->In traditional applications you request HTML page and some images
+		etc per page, in single page applications you request entire application
+		and assets and in subsequent requests you are responded with JSON data
+			->With pre-rendering of some of the views on the server side itself
+			you can mitigate some of the initial downloading time for your
+			web application
+				->Angular, for example, enables you to pre-render part of your
+				first view on the server-side to enable display of information
+				to the client quickly while the rest of the web application
+				is being downloaded by your browser
+				
+	->We can also use route parameters to pass information from a component to
+	another
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_______________________________________________________________
+
+Angular Forms, Angular and Reactive JavaScript
+	->Angular forms: template driven and reactive forms in angular
+		->Angular template driven forms
+		->Angular template driven form validation
+			->Angular support for
+				->Two-way data binding
+				->Change tracking
+				->Form validation and error handling
+					Angular template driven forms:-
+						->Angular template driven forms use angular template syntax to construct a form using the form elements
+						->and we will also be able to bind form-specific directives for form elements and then leverage the
+						two way data binding, form-validation and error support that angular provides for us
+							->ngSubmit
+							->two way data binding
+						->Form validation:-
+							->Angular template reference variables
+								->template reference variables can be then be used within the template to check for
+								control states such as valid, dirty, errors
+								
+		->Angular reactive forms
+			->user reactive style of programming to support forms
+			->the reactive style of programming advocates explicit
+			management of data flowing between a non-UI data model
+			and a UI-oriented form model
+				->In the reactive approach we create a tree of
+				form control objects in the component class
+				->Bind them to the native form control elements
+				in the template
+				->Component clas immedate access to both data model
+				and the form control structure
+					->Push data model values to form controls and pull
+					user-changed values back out
+				Advantages:-
+					->Testing, evaludation becomes easier
+					->Values and validity updates are always synchronous
+						->values in the form elements are immediately
+						avaliable and synchronous with the typescript code,
+						in template driven forms, it takes one cycle for
+						any changes to be reflected into your code
+				->Reactive forms are supported through some classes that
+				are available through the angular forms library:-
+					FormControl class: power individual form control, tracks the
+					value and validation status of those elements
+					FormGroup: group of FormControl instances
+					FormBuilder class allows us to create the forms within our
+					typescript code and then able to tie them up with the
+					template controls
+					->Populate form model:-
+						->Form model and data model are separate
+						`	->Any changes made in form template will only
+							flow into the form model and you have to explicitly
+							reflect the form data back to the data model
+							either through a service or whatever means you use
+							and this separation helps us to design our code much better
+							->Two methods to populate the form model from the data model:-
+								-setValue():- assign every form control value at once
+								->patchValue():- update specific form control value
+									->Reactive forms are built mostly in the component and then
+									mapped into the form elements in the template file
+					
+		->Angular reactive form validation
+			->Angular already provides with a set of validators for reactive forms
+	->How angular and reactive programming work together and how angular
+	angular uses reactive programming for implementing various forms of
+	support within the angular application
+		->How angular leverages RxJS to support various features within
+		the framework
+			->Angular and RxJS
+	->How angular supports promises
+		->Angular and Promise
+			->Get a basic understanding of JavaScript promises
+				->When we make any request to a service or backend server, it is gonna take some
+				time for the result to become availble to us and this may stuck us waiting for result
+				and thus not allowing us to do other work and this will bring a bad user experience
+				and so it is important that whenever your results are gonna take time you should be
+				able to proceed forward without waiting for that result and that is where asynchronous
+				computation comes to your advantage.
+					->In asynchronous computation when you send out a request you are expecting the results
+					to come at a later time. Promises provide us with a way of dealing with this.
+						->A promise is a mechanism that supports asynchronous computation. Promise provides
+						mechanism or a proxy for a value that is not available at the moment that you ask for it. 
+						So a promise returns a promise that when the result becomes available it will come back 
+						and deliver the result to you.
+							->So a promise returns a proxy object to you and you hold on to that proxy object and 
+							that proxy object will give you the access to the result when it will become available
+							
+								->When a promise will be given to you it will be in the pending state and when the
+								promise resoves, i.e. the results become available the promise is able to deliver the result
+								to you then the promise will move to the resolved or fulfilled state
+									->When a promise is delivered, since it's a proxy object, it will internally have
+									both the resolve and reject function. So whether it resolves or reject we need to send
+									back the information to whoever we deliver the promise to
+										->When a promise is returned it is returned as a object and it provides two methods,
+											->then
+												->When the promise is successfully resolved then it will call the resolve method
+												and deliver the result to you, where the result gets delivered to you? So when you
+												write the code waiting for a promise to deliver you will specify what to do when the
+												promise delivers the result in the then option and inside the then you will supply a
+												function that will deal with the result when it comes in
+											->catch
+												->Why promises?
+													->Solves Callback hell problem
+														->heavily nested callback code that is very difficult to figure out what it is trying to do
+													->Promises can be chained
+													->Can immediately return if the result is immediately available
+														->Services often return the promises when the components call the service methods
+														and thereafter when the promise resolves then the components will have results
+														available to them
+			->How angular and reactive programming work together and how angular
+			angular uses reactive programming for implementing various forms of
+			support within the angular application
+				->How angular leverages RxJS to support various features within
+				the framework
+					->Angular and RxJS
+					->Some observables that are already built into Angular framework
+					and how we can leverage them to do reactive programming within
+					Angular
+						->Angular and reactive programming, in particular RxJS
+							->How Angular leverages reactive programming paradigm
+							for designing Angular applications
+								->The whole discussion about reactive programming revolves
+								around this particular software engineering pattern
+								called as the observable pattern
+									->The observable pattern revolves around observables. So
+									you have observables whose behavior can be observed by
+									observers, so that's why it's called as the observer
+									pattern
+										->You declare certain objects as observables or subjects
+										and these observables will be observed by observers
+											->The observers themselves will register to watch the
+											changes in the observables and the observables will notify
+											the observers whenever the changes will occur. So in this
+											observer patter, various observers will subscribe to the
+											observable or register themselves to the observable, so that'save
+											how the observable knows which observers are interested in any
+											changes in its state, so thereby whenever an observable observes
+											a change in its state, it will notify the observers about the
+											change of state and the observer can subsequently take the actions
+											based on this notification of the change in the state of observable.
+											 ->Observer pattern is one way of writing software applications. It
+											 is based around streams. The data that flows through your application
+											 can be viewed as a stream of values that flows through your application.
+											 So the stream is the primary channel around which the observer pattern is
+											 designed. So in observer pattern you can subscribe to these streams and
+											 whenever a value comes around on the stream, you can pick up that value and
+											 react to that value. So to be able to react to that value, you need to be able
+											 to subscribe to that stream. So you need to subscribe to the observable. The
+											 observable will frequently keep emitting the values and the observer can
+											 react to those. This also means when you are no longer interested you can
+											 unsubscribe from that observable.
+											->Advantage over promise:-
+												->Cancelilng and retrial straightforward
+											Reactive programming:-
+												->In reactive programming we are interested in data flows, i.e.
+												how data flows through your application.
+												->Any data flow can  be treated as a stream
+												->These data flows can propagate changes through out your applications
+												->While these changes are  being propagated you can take a stream, modify
+												it and make another stream.
+													->RxJS
+														->RxJS is JavaScript implementation of the observer pattern
+														and also supports for reactive programming. So if you were to
+														do reactive programming in JavaScript then you will leverage
+														RxJS
+														->RxJS is library for composing asynchronous and event-based
+														programs by using observable sequences
+															->You can treat the value returned by observables as array
+															and that's why many of the operators that works on array
+															works similarly on RxJS observables also and you can use them
+															to allow handling asynchronous events. These operator converts
+															the observables into so called transformed observables
+																->Observables all over angular
+																	->Forms
+																	->HTTP
+																		->Whenever you perform methods GET, POST etc will 
+																		they will yield you an observable which you can
+																		subscribe within your service and then subsequently
+																		transform it and then give it to your component and
+																		the component can subscribe to the observables that
+																		the services provide by transforming the HTTP streams
+																		and so on
+																	->AsyncPipe
+																	->Change detection
+													
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_______________________________________________________________
+
+Client-Server Communication
+	->How angular application communcates with the server that provides
+	data that can be fetched from the server side and then used to
+	render views within the angular application
+	->Correspondingly we will also look at how any changes that you want
+	to make to the data can be reflected back to the server side from your
+	angular application
+	->Angular and HTTP module within angular
+	->How the REST API is leveraged to design angular application
+	->Animations and directives in angular in particular attributes 
+	directives
+	->Testing of angular application briefly
+	->Building and deployment of angular application to a server

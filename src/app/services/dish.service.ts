@@ -5,7 +5,8 @@ import { DISHES } from '../shared/dishes';
 @Injectable()
 export class DishService {
 
-  constructor() { }
+  constructor() {
+  }
 
   getDishes(): Promise<Dish[]> {
     return new Promise(resolve => {
@@ -22,8 +23,9 @@ export class DishService {
   }
 
   getFeaturedDish(): Promise<Dish> {
-    return  new Promise(resolve => {
+    return new Promise(resolve => {
       // Simulate server latency with 2 second delay
       setTimeout(() => resolve(DISHES.filter((dish) => dish.featured)[0]), 2000);
     });
   }
+}

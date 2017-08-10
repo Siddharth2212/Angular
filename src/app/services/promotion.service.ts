@@ -23,7 +23,7 @@ export class PromotionService {
 
   getFeaturedPromotion(): Promise<Promotion> {
     return new Promise(resolve => {
-      // Simulate server latency with 2 second delay
+      // Simulate server latency with 2 seconds delay
       setTimeout(() => resolve(PROMOTIONS.filter((promotion) => promotion.featured)[0]), 2000);
     });
   }

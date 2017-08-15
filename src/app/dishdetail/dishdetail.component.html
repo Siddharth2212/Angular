@@ -42,7 +42,42 @@
           <span> {{comment.date | date}} </span>
         </p>
       </md-list-item>
+      <md-list-item *ngIf="feedbackForm.valid">
+        <p md-line> {{feedbackForm.value.comment}} </p>
+        <p md-line> {{feedbackForm.value.rating}} stars</p>
+        <p md-line>
+          <span class="demo-2"> -- {{feedbackForm.value.author}} </span>
+          <span> {{feedbackForm.value.date | date}} </span>
+        </p>
+      </md-list-item>
     </md-list>
+
+    <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+      <p>
+        <md-input-container dividerColor="{{(formErrors.author) ? 'warn' : 'primary'}}">
+          <input mdInput formControlName="author" placeholder="Name" type="text" required>
+          <md-hint>
+                <span [hidden]="!(formErrors.author)">
+                  {{formErrors.author}}</span>
+          </md-hint>
+        </md-input-container>
+      </p>
+      <table class="form-size">
+        <td>
+          <md-slider formControlName="rating" thumbLabel tickInterval="1" min="1" max="5" step="1" value="5"></md-slider>
+        </td>
+      </table>
+      <p>
+        <md-input-container dividerColor="{{(formErrors.comment) ? 'warn' : 'primary'}}" class="full-width">
+          <textarea required mdInput formControlName="comment" placeholder="Your Comment" rows=12></textarea>
+          <md-hint>
+                <span [hidden]="!(formErrors.comment)">
+                  {{formErrors.comment}}</span>
+          </md-hint>
+        </md-input-container>
+      </p>
+      <button type="submit" md-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">Submit</button>
+    </form>
   </div>
   <div [hidden]="dish">
     <md-spinner></md-spinner><h4>Loading . . . Please Wait</h4>

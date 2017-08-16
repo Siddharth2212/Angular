@@ -6,11 +6,25 @@ import {Location} from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Comment} from '../shared/comment';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
-  styleUrls: ['./dishdetail.component.scss']
+  styleUrls: ['./dishdetail.component.scss'],
+  animations: [
+    trigger('visibility', [
+      state('shown', style({
+        transform: 'scale(1.0)',
+        opacity: 1
+      })),
+      state('hidden', style({
+        transform: 'scale(0.5)',
+        opacity: 0
+      })),
+      transition('* => *', animate('0.5s ease-in-out'))
+    ])
+  ]
 })
 
 export class DishdetailComponent implements OnInit {
@@ -18,10 +32,12 @@ export class DishdetailComponent implements OnInit {
   feedback: Comment;         // Corresponding data model
 
   dish: Dish;
+  dishcopy = null;
   dishIds: number[];
   prev: number;
   next: number;
   errMess: string;
+  visibility = 'shown';
 
   formErrors = {
     'author': '',
@@ -65,8 +81,9 @@ export class DishdetailComponent implements OnInit {
 
     this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds, errmess => this.errMess = <any>errmess);
     this.route.params
-      .switchMap((params: Params) => this.dishservice.getDish(+params['id']))
-      .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });
+      .switchMap((params: Params) => { this.visibility = 'hidden'; return this.dishservice.getDish(+params['id']); })
+      .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); this.visibility = 'shown'; },
+        errmess => { this.dish = null; this.errMess = <any>errmess; });
   }
 
   createForm() {
@@ -95,7 +112,9 @@ export class DishdetailComponent implements OnInit {
   onSubmit() {
     this.feedback = this.feedbackForm.value;
     this.feedback.date = (new Date()).toISOString();
-    this.dish.comments.push(this.feedback);
+    this.dishcopy.comments.push(this.feedback);
+    this.dishcopy.save()
+      .subscribe(dish => { this.dish = dish; console.log(this.dish); });
     console.log(this.feedback);
     this.feedbackForm.reset({
       author: '',

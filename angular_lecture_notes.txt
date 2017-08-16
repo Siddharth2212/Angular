@@ -1,7 +1,7 @@
 Front-End JavaScript Frameworks Overview: Angular
 
-In this module we get a quick introduction to front-end JavaScript 
-frameworks, followed by an introduction to Angular. 
+In this module we get a quick introduction to front-end JavaScript
+frameworks, followed by an introduction to Angular.
 ->Express the general characteristics of JavaScript frameworks
 Why JS frameworks?
 ->As application size grows it becomes difficult to manage DOM manipulation
@@ -14,15 +14,15 @@ Library vs Frameworks:-
 	a library:-a collection of functions which ar useful when writing web apps.
 				Your code is in charge and it calls into the library when it sees
 				fit. E.g., jQuery
-	frameworks:-a particular implementation of a web application where your 
+	frameworks:-a particular implementation of a web application where your
 				code fills in the details. The framework is in charge and it
-				calls into your code when it needs something app specific. 
+				calls into your code when it needs something app specific.
 				E.g., Angular, Ember, etc.
 				(The framework itself scaffolds the application and you are
 				asked to fill in the details that are required to
 				customize the application to solve the specific problem
 				that you are trying to address)
-				
+
 Angular History:-
 	->Evolved from AngularJS was designed by Misko Hevery  and released in June 2012)
 	->Angular is Complete rewrite of the AngularJS framework but does owe
@@ -31,15 +31,15 @@ Angular History:-
 	->Mobile support
 	->Provides server-side rendering to speed up rendering on browsers
 	->Provides powerful templeting support
-	
+
 What is Angular?
 	->Structural framework for dynamic web applications
 		->HTML  only does static documents
 		->Angular supports data driven dynamic applications using declarative
 		approach
-				
+
 We will also learn about Angular components and their templates.
-->Scaffold out a starter Angular application using angular-cli, the 
+->Scaffold out a starter Angular application using angular-cli, the
 command line tool:-
 	->https://cli.angular.io
 	->npm install -g @angular/cli
@@ -47,8 +47,8 @@ command line tool:-
 	->ng serve --open
 	->Create a new project using the Angular framework
 	->Set up application using angular, angular material and angular flex-layout
-		->In this exercise you installed the Angular CLI tool and created 
-		a basic Angular project and served up the compiled project to your 
+		->In this exercise you installed the Angular CLI tool and created
+		a basic Angular project and served up the compiled project to your
 		browser.
 ->Understand the architecture of an Angular application:-
 	->Angular applications are built by combination of HTML and either typescript
@@ -65,7 +65,7 @@ command line tool:-
 		by higher level modules. So you can look at angular application being about
 		modular architecture with a root module(AppModule) at the top which takes
 		the help of other modules organized into a modular hierarchy.
-		
+
 		->root module in angular is typAngularically named the AppModule
 		->Let's being our journey at index.html
 			-><app-root>Loading...</app-root> does  not look familiar as to HTML.
@@ -74,7 +74,7 @@ command line tool:-
 				modules with a root module. Your angular application is bootstrapped by
 				bootstrapping the root module to start your application. A companion to
 				index.html page is the main.ts file.
-					->If you go into the main.ts file, you see 
+					->If you go into the main.ts file, you see
 					platformBrowserDynamic().bootstrapModule(AppModule);
 					The parameter here is AppModule which is a typical named
 					give to the root module in angular application
@@ -82,7 +82,7 @@ command line tool:-
 				import { enableProdMode } from '@angular/core';
 				it specifies that we will import enableProdMode module from
 				the angular core library
-				similarly, import { platformBrowserDynamic } from 
+				similarly, import { platformBrowserDynamic } from
 				'@angular/platform-browser-dynamic'; means that you are
 				importing platformBrowserDynamic module from the
 				angular platform-browser-dynamic library.
@@ -120,17 +120,17 @@ command line tool:-
 			->we will use the angular material module to design the layout
 				->it provides a no of interesting angular components that we
 				can make use of in designing our angular component's templates
-					->npm install --save @angular/material @angular/cdk 
-					  npm install --save @angular/animations 
+					->npm install --save @angular/material @angular/cdk
+					  npm install --save @angular/animations
 					  npm install --save hammerjs
-					  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+					  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 						angular material icons
 					  import modules to app  module
 					  configured angular application to make use of angular material and flex layout
 					  make use of first angular material design component in the app component's template file
 					  make use of built-in Material theme to our application
 			->in addition we will make use of the flex-layout which makes use of the
-			css flex-layout which enables us to do responsive design within our 
+			css flex-layout which enables us to do responsive design within our
 			angular application
 		->app.component.ts file supports the root component that forms the root
 		component of our angular application
@@ -139,9 +139,9 @@ command line tool:-
 			->templateUrl: points to the template which provides the view for\
 			this component
 			->styleUrls: points the scss code which can be used to style our template
-	
+
 ->Create Angular components within your Angular application
-	->Role of angular components in designing angular application and 
+	->Role of angular components in designing angular application and
 	designing the various views that are supported in angular application
 		->A typical angular application consists of many components. Components
 		control a part of the screen called as view in angular
@@ -185,13 +185,13 @@ ____________________________
 
 Angular Services, Routing and Single Page Applications
 	->Describe the various ways that data binding is used in an Angular application
-		In this lesson you will learn about data binding and how data 
-		binding enables the flow of information between the component 
+		In this lesson you will learn about data binding and how data
+		binding enables the flow of information between the component
 		and its template.
 			For an angular application to be dynamic, there has to be communication
 			between DOM and the component
-			
-			Data binding:- a mechanism for coordinating the flow of 
+
+			Data binding:- a mechanism for coordinating the flow of
 			information between the component and the template
 				->On the component side it may be a property or methods
 				that may be supplied to the template or invoked from
@@ -200,32 +200,32 @@ Angular Services, Routing and Single Page Applications
 				required by the template to be rendered into the DOM or events
 				from the DOM captured and sent back to your component
 					->All this require data flowing from component to template
-					->Events generated by user interaction flowing to the 
+					->Events generated by user interaction flowing to the
 					component
 						->All this happen in angular using four different
 						kinds of flow of information
 							->interpolation:- where the value of a property
 							flows to the component
 
-		You will learn about interpolation, property attribute and event 
-		binding and the use of two-way data binding. At the end of this 
+		You will learn about interpolation, property attribute and event
+		binding and the use of two-way data binding. At the end of this
 		lesson you will be able to:
-			
-		Understand how the data flows between the component code and 
+
+		Understand how the data flows between the component code and
 		its template
-			
-		Understand how one-way and two-way data binding can be used to 
+
+		Understand how one-way and two-way data binding can be used to
 		effect the flow of data.
-		
+
 			->Bind a property into template from anther component and access into
 			this component by using Input module.
 				->We can use Input module to retrieve information from one component
 				to another component
-	
-	
+
+
 	->Create a service that enables the Angular application to encapsulate all data related operations
-		->In this lesson you will learn about the basics of Angular 
-		services and how they interact with Angular components. 
+		->In this lesson you will learn about the basics of Angular
+		services and how they interact with Angular components.
 			->Why services?
 				->Component classes should be kept as lean as possible.
 				->They should only be  mainly concentrating on acting as
@@ -265,7 +265,7 @@ Angular Services, Routing and Single Page Applications
 								being aware of exactly how the first
 								object was implemented or created
 									->So in this case the object that is
-									dependent is unaware or does not need 
+									dependent is unaware or does not need
 									to worry about how the other object
 									is implemented. It just needs to make
 									use of your object wherever it is required.
@@ -289,7 +289,7 @@ Angular Services, Routing and Single Page Applications
 												the object you are dependent upon you can
 												pass a mock object to test your specific
 												object
-						
+
 					->DI has 4 different roles:-
 						->Service: that you are gonna make use of in
 						your component, that needs to be injected
@@ -308,7 +308,7 @@ Angular Services, Routing and Single Page Applications
 					which:-
 						->takes care of creation of these services
 						->inject them wherever you need them
-						
+
 					->@Injectable() decorator is provided by Injectable module.
 					This allows this object to be injected into wherever it
 					is required. This allows DI to be used in our application.
@@ -317,21 +317,21 @@ Angular Services, Routing and Single Page Applications
 					be made available to you in the component by using constructor,
 					so that you can then call upon methods this service provides
 					to you in order to do work on your behalf.
-						
+
 				->Promises
 				->Reactive Javascript
-				
-		->You will also learn the basics of Model-View-Controller (MVC) 
+
+		->You will also learn the basics of Model-View-Controller (MVC)
 		and Model-View-ViewModel (MVVM) software engineering paradigms.
 			Design patterns:-A well-documented solution to a recurring problem
 			->Also referred to as an architectural pattern
 			->To summarize these are resusable solution to commonly occuring
 			problems
-		->You will also be introduced to the basics of Dependency 
+		->You will also be introduced to the basics of Dependency
 		Injection (DI)
-	
-	
-	
+
+
+
 	->Develop an Angular router to enable navigating to various views in your Angular application
 		->Set up the router module to enable navigation among multiple component views
 		->Set up the routes to enable the navigation
@@ -381,7 +381,7 @@ Angular Services, Routing and Single Page Applications
 									you specify this router outlet
 								->routerLink is another directive that can be used
 								with anchor links to navigate by triggering angular router
-	
+
 	->Develop a single page application using the Angular router support
 		->In traditional applications you request HTML page and some images
 		etc per page, in single page applications you request entire application
@@ -393,7 +393,7 @@ Angular Services, Routing and Single Page Applications
 				first view on the server-side to enable display of information
 				to the client quickly while the rest of the web application
 				is being downloaded by your browser
-				
+
 	->We can also use route parameters to pass information from a component to
 	another
 
@@ -431,7 +431,7 @@ Angular Forms, Angular and Reactive JavaScript
 							->Angular template reference variables
 								->template reference variables can be then be used within the template to check for
 								control states such as valid, dirty, errors
-								
+
 		->Angular reactive forms
 			->user reactive style of programming to support forms
 			->the reactive style of programming advocates explicit
@@ -472,7 +472,7 @@ Angular Forms, Angular and Reactive JavaScript
 								->patchValue():- update specific form control value
 									->Reactive forms are built mostly in the component and then
 									mapped into the form elements in the template file
-					
+
 		->Angular reactive form validation
 			->Angular already provides with a set of validators for reactive forms
 	->How angular and reactive programming work together and how angular
@@ -493,12 +493,12 @@ Angular Forms, Angular and Reactive JavaScript
 					->In asynchronous computation when you send out a request you are expecting the results
 					to come at a later time. Promises provide us with a way of dealing with this.
 						->A promise is a mechanism that supports asynchronous computation. Promise provides
-						mechanism or a proxy for a value that is not available at the moment that you ask for it. 
-						So a promise returns a promise that when the result becomes available it will come back 
+						mechanism or a proxy for a value that is not available at the moment that you ask for it.
+						So a promise returns a promise that when the result becomes available it will come back
 						and deliver the result to you.
-							->So a promise returns a proxy object to you and you hold on to that proxy object and 
+							->So a promise returns a proxy object to you and you hold on to that proxy object and
 							that proxy object will give you the access to the result when it will become available
-							
+
 								->When a promise will be given to you it will be in the pending state and when the
 								promise resoves, i.e. the results become available the promise is able to deliver the result
 								to you then the promise will move to the resolved or fulfilled state
@@ -587,7 +587,7 @@ Angular Forms, Angular and Reactive JavaScript
 																->Observables all over angular
 																	->Forms
 																	->HTTP
-																		->Whenever you perform methods GET, POST etc will 
+																		->Whenever you perform methods GET, POST etc will
 																		they will yield you an observable which you can
 																		subscribe within your service and then subsequently
 																		transform it and then give it to your component and
@@ -596,7 +596,7 @@ Angular Forms, Angular and Reactive JavaScript
 																		and so on
 																	->AsyncPipe
 																	->Change detection
-													
+
 
 
 
@@ -626,8 +626,100 @@ Client-Server Communication
 	to make to the data can be reflected back to the server side from your
 	angular application
 	->Angular and HTTP module within angular
+		->Angular supports the client server communication through the angular HTTP client
+			->The HTTP module returns the data to the service in the form of observables which
+			will be then processed and return as an observable to our component
+				->The Angular HTTP client follows the fetch specification  for the
+				response object returned by fetch function. That spec defines a json()
+				method that parses the response body into javascript object
+					->catch method supported by the HTTP client allows us to catch
+					the error, process the error and send it to the component
 	->How the REST API is leveraged to design angular application
-	->Animations and directives in angular in particular attributes 
+	->Animations and directives in angular in particular attributes
 	directives
 	->Testing of angular application briefly
 	->Building and deployment of angular application to a server
+		->In this lesson you will learn about Representational State Transfer (REST) based API for data access on the server.
+		In addition you will learn about the a third-party Angular library called Restangular that enables acccess to a RESTful server.
+		Restangular simplifies common GET, POST, DELETE, and UPDATE requests with a minimum of client code. It's a perfect fit
+		for any WebApp that consumes data from a RESTful API
+			->Web Services
+				->Web services are a way of designing systems to support interoperability among systems connected over a network
+					->Two common approaches are used in practice
+						->SOAP (Simple Object Access Protocol) based services which uses WSDL (Web Services Description Language) for specifying
+						how the two endpoints communicate with each other and uses XML as the format for messages being exchanged between the
+						two endpoints
+						->REST
+							->Also uses web standards
+							->Exchange of data between two end points using either XML or JSON as the format
+								Typically, client-server communication is faciilitated using REST, where the
+								server supports the REST API and client can then invoke the REST API endpoints
+								in order to obtain information or to upload information to the server
+									->REST is a style of software architecture for distributed hypermedia systems
+									such as world wide web
+										->Within the REST there are 4 basic design principles
+											-> First and foremost, REST is built upon HTTP protocol, so it uses
+											all the HTTP methods
+											-> REST is designed to be stateless, meaning the server doesn't store
+											any information about the state after the communication is completed. So when a server
+											receives a request, the server replies and after that, it doesn't remember about that
+											conversation between the client and the server.
+											-> The REST way of providing the resources is to expose a directory structure like URIs
+											-> The format of data exchange can be JSON or XML or both
+												->Resources
+													->The key abstraction of information in REST is a resource which is represented
+													with a global identifier (URI in HTTP). REST uses URI to identify resources.
+													Directory structure to identify resources, where as you traverse the path
+													from  more generic to more specific, you are navigating the data.
+												->Verbs
+													->GET, POST, PUT, DELETE etc verbs can be mapped into actions we want
+													to perform on the resource
+												->Stateless Server
+													->The server client should not track the client state, because if the server
+													tracks the client state then it would not be scalable. So every request will be
+													treated as an independent request and will not handle upon previous request handled
+													by the server. So it's the responsibility of the client to track it's own state, either
+													by cookies or by using client side database.
+														->So we learnt how REST API is a useful way of standardizing the server-side
+														API that can be accessed from a client. The Angular client can itself
+														access the REST API using the standard HTTP module that is already
+														built into the Angular framework.
+
+	->Directives
+		->Angular templates are dynamic
+		->Directives give instructions to angular on how to render the templates to the DOM
+		->A directive can be defined in angular as a class with the @Directive decorator
+		->A component is a special kind of directive with a template associated to it
+			->Attribute directives
+				->Attribute directives are used as attributes for elements in the template
+					->The enable us to change certain properties of the HTML elements
+						->Attribute directives listen to and modify the behavior of HTML elements,
+						attributes, properties and components that we use within our templates
+							->Built-in attribute directives: NgStyle, NgClass, NgModel
+
+	->Animations
+		->Animations give visual feedback to the user about things that are happening in the application
+			->Angular material leverages the animation support that Angular provides through its animation library
+				->Same native performance as pure CSS animations
+				->Built on top of web animations API
+					->use polyfill web-animations.min.js for older browsers
+				->Tightly integrate the animation logic with rest of the application code
+					->Animations built around transitions of an element between states driven
+					by a model attribute
+						->Any change of state can trigger the animation effect to come into picture
+					->Defined inside the @Component metadata. You will define the various triggers
+					for your animations here.
+					->Need to import some animation-specific imports and functions
+						->BrowserAnimations module
+						->trigger, state, style, animate, transition from @angular/animations
+							->Animation behavior and angular applications revolves around states and transitions
+							among the states
+								->State can be anything that you define as state, for example shown and hidden
+									->Few special states
+										->Void state
+											->An element that is not on the screen, that is not part of the view
+											will be considered to be in the void state
+										->* state
+											->any state
+										->Void => * is equivalent to :enter
+										->* => Void is equivalent to :leave

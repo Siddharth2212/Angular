@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Feedback, ContactType } from '../shared/feedback';
-import { flyInOut } from '../animations/app.animation';
+import {expand, flyInOut} from '../animations/app.animation';
+import {FeedbackService} from '../services/feedback.service';
 
 @Component({
   selector: 'app-contact',
@@ -12,13 +13,17 @@ import { flyInOut } from '../animations/app.animation';
     'style': 'display: block;'
   },
   animations: [
-    flyInOut()
+    flyInOut(),
+    expand()
   ]
 })
 export class ContactComponent implements OnInit {
   feedbackForm: FormGroup;    // Form model that will host the reactive form
   feedback: Feedback;         // Corresponding data model
   contactType = ContactType;
+  errMess: string;
+  pending: Boolean = false;
+  submittedFormValue: Feedback;
 
   formErrors = {
     'firstname': '',
@@ -65,7 +70,7 @@ export class ContactComponent implements OnInit {
   }
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private feedbackService: FeedbackService) {
     this.createForm();
   }
 
@@ -90,8 +95,15 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit() {
+    this.pending = true;
     this.feedback = this.feedbackForm.value;
     console.log(this.feedback);
+    this.feedbackService.submitFeedback(this.feedback)
+      .subscribe(response => { this.pending = false;
+      this.submittedFormValue = response ;
+      const root = this;
+      setTimeout(function(){ root.submittedFormValue = null; }, 5000);
+      }, errmess => this.errMess = <any>errmess);
     this.feedbackForm.reset({
       firstname: '',
       lastname: '',

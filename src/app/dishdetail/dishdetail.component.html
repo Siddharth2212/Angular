@@ -1,31 +1,33 @@
-<div class="container"
-     fxLayout="row"
-     fxLayout.sm="column"
-     fxLayout.xs="column"
-     fxLayoutGap="10px"
-     fxLayoutGap.xs="0">
-
-  <div fxFlex="50" *ngIf="dish" [@visibility]="visibility" [@expand]>
-      <md-card>
-        <md-card-header>
-          <md-card-title>
-            <h3>{{dish.name | uppercase}}</h3>
-          </md-card-title>
-        </md-card-header>
-        <img md-card-image src="{{BaseURL + dish.image}}" alt={{dish.name}}>
-        <md-card-content>
-          <p>{{dish.description}}
-          </p>
-        </md-card-content>
-        <md-card-actions>
-          <button md-button [routerLink]="['/dishdetail', prev]"><span class="fa fa-chevron-left fa-lg"></span></button>
-          <button md-button (click)="goBack()">BACK</button>
-          <button md-button>LIKE</button>
-          <button md-button>SHARE</button>
-          <span class="flex-spacer"></span>
-          <button md-button [routerLink]="['/dishdetail', next]"><span class="fa fa-chevron-right fa-lg"></span></button>
-        </md-card-actions>
-      </md-card>
+<div class="container">
+<div class="row">
+  <div class="col-md-6"  *ngIf="dish" [@visibility]="visibility" [@expand]>
+    <md-card>
+      <md-card-header>
+        <md-card-title>
+          <h3>{{dish.name | uppercase}}</h3>
+        </md-card-title>
+      </md-card-header>
+      <img md-card-image src="{{dish.image}}" alt={{dish.name}}>
+      <md-card-content>
+        <p class="small margin-none">
+          <span class="fa fa-fw fa-star"></span>
+          <span class="fa fa-fw fa-star"></span>
+          <span class="fa fa-fw fa-star"></span>
+          <span class="fa fa-fw fa-star-o"></span>
+          <span class="fa fa-fw fa-star-o"></span>
+        </p>
+        <p>{{dish.description}}
+        </p>
+      </md-card-content>
+      <md-card-actions>
+        <button md-button [routerLink]="['/dishdetail', prev]"><span class="fa fa-chevron-left fa-lg"></span></button>
+        <button md-button (click)="goBack()">BACK</button>
+        <button md-button>LIKE</button>
+        <button md-button>SHARE</button>
+        <span class="flex-spacer"></span>
+        <button md-button [routerLink]="['/dishdetail', next]"><span class="fa fa-chevron-right fa-lg"></span></button>
+      </md-card-actions>
+    </md-card>
   </div>
   <div [hidden]="dish || errMess">
     <md-spinner></md-spinner><h4>Loading . . . Please Wait</h4>
@@ -34,8 +36,7 @@
     <h2>Error</h2>
     <h4>{{errMess}}</h4>
   </div>
-
-  <div fxFlex="40" *ngIf="dish" [@visibility]="visibility" [@expand]>
+  <div class="col-md-5" *ngIf="dish" [@visibility]="visibility" [@expand]>
     <md-list>
       <h3>Comments</h3>
       <md-list-item *ngFor="let comment of dish.comments">
@@ -82,12 +83,142 @@
       </p>
       <button type="submit" md-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">Submit</button>
     </form>
+    <div [hidden]="dish || errMess">
+      <md-spinner></md-spinner><h4>Loading . . . Please Wait</h4>
+    </div>
+    <div *ngIf="errMess">
+      <h2>Error</h2>
+      <h4>{{errMess}}</h4>
+    </div>
   </div>
-  <div [hidden]="dish || errMess">
-    <md-spinner></md-spinner><h4>Loading . . . Please Wait</h4>
-  </div>
-  <div *ngIf="errMess">
-    <h2>Error</h2>
-    <h4>{{errMess}}</h4>
+</div>
+  <div class="row">
+    <div class="page-section">
+      <h2 class="text-headline margin-none">What you'll learn</h2>
+      <p class="text-subhead text-light">A minus obcaecati optio pariatur porro.</p>
+      <ul class="list-group relative paper-shadow margin-none" data-hover-z="0.5" data-animated>
+        <li class="list-group-item">
+          <div class="media v-middle">
+            <div class="media-left">
+              <div class="icon-block s30 bg-red-300 text-white img-circle">
+                <i class="fa fa-star"></i>
+              </div>
+            </div>
+            <div class="media-body text-body-2">
+              Basics of GIT and how to become a STAR.
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item paper-shadow">
+          <div class="media v-middle">
+            <div class="media-left">
+              <div class="icon-block s30 bg-green-300 text-white img-circle">
+                <i class="fa fa-database"></i>
+              </div>
+            </div>
+            <div class="media-body text-body-2">
+              Database connections & some other nice features.
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item paper-shadow">
+          <div class="media v-middle">
+            <div class="media-left">
+              <div class="icon-block s30 bg-indigo-300 text-white img-circle">
+                <i class="fa fa-trophy"></i>
+              </div>
+            </div>
+            <div class="media-body text-body-2">
+              Eaque ex exercitationem quia reprehenderit?
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item paper-shadow">
+          <div class="media v-middle">
+            <div class="media-left">
+              <div class="icon-block s30 bg-orange-300 text-white img-circle">
+                <i class="fa fa-code-fork"></i>
+              </div>
+            </div>
+            <div class="media-body text-body-2">
+              Ab distinctio nemo, provident quia quibusdam ullam.
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item paper-shadow">
+          <div class="media v-middle">
+            <div class="media-left">
+              <div class="icon-block s30 bg-grey-500 text-white img-circle">
+                <i class="fa fa-check"></i>
+              </div>
+            </div>
+            <div class="media-body text-body-2">
+              Conclusion & Notes.
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="pull-right">
+      <a class="btn btn-white btn-circle paper-shadow relative" data-z="1" href="#"><i class="md md-add"></i></a>
+    </div>
+    <h2 class="text-headline margin-none">Testimonials</h2>
+    <p class="text-subhead text-light">A few words from our past students</p>
+    <br/>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="testimonial">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam amet doloremque enim error id, inventore magni odio odit quo tenetur.</p>
+            </div>
+          </div>
+          <div class="media v-middle">
+            <div class="media-left">
+              <img src="images/people/50/guy-3.jpg" alt="People" class="img-circle width-40" />
+            </div>
+            <div class="media-body">
+              <p class="text-subhead margin-v-5-0">
+                <strong>Adrian D. <span class="text-muted">@ Mosaicpro Inc.</span></strong>
+              </p>
+              <p class="small">
+                <span class="fa fa-fw fa-star text-yellow-800"></span>
+                <span class="fa fa-fw fa-star text-yellow-800"></span>
+                <span class="fa fa-fw fa-star text-yellow-800"></span>
+                <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="testimonial">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam amet doloremque enim error id, inventore magni odio odit quo tenetur.</p>
+            </div>
+          </div>
+          <div class="media v-middle">
+            <div class="media-left">
+              <img src="images/people/50/guy-6.jpg" alt="People" class="img-circle width-40" />
+            </div>
+            <div class="media-body">
+              <p class="text-subhead margin-v-5-0">
+                <strong>Adrian D. <span class="text-muted">@ Mosaicpro Inc.</span></strong>
+              </p>
+              <p class="small">
+                <span class="fa fa-fw fa-star text-yellow-800"></span>
+                <span class="fa fa-fw fa-star text-yellow-800"></span>
+                <span class="fa fa-fw fa-star text-yellow-800"></span>
+                <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
